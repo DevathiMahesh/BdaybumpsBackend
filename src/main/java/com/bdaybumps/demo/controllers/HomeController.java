@@ -8,7 +8,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 @RestController
 public class HomeController {
@@ -19,8 +22,15 @@ public class HomeController {
         return "Welcome Mahesh!";
     }
     @PostMapping("/createuser")
-    public ResponseEntity<UserEntity> createUser(UserModelDTO user)
+    public ResponseEntity<UserEntity> createUser(@RequestBody  UserModelDTO user)
     {
+
+        System.out.println("In Home controller"+user);
         return userservice.createUser(user);
+    }
+    @GetMapping("/allusers")
+    public List<UserEntity> getAllUsers()
+    {
+        return userservice.getAllUsers();
     }
 }

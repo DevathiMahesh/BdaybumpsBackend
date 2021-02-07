@@ -23,12 +23,12 @@ class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .password(passwordEncoder().encode("user"))// Spring Security 5 requires specifying the password storage format
                 .roles("USER");
     }
-//    @Override
-//    public void configure(WebSecurity web) throws Exception {
-//        web
-//                .ignoring()
-//                .antMatchers("/createuser");
-//    }
+    @Override
+    public void configure(WebSecurity web) throws Exception {
+        web
+                .ignoring()
+                .antMatchers("/createuser");
+    }
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         // all routes protected

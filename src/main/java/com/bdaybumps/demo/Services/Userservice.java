@@ -8,6 +8,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.Optional;
+
 @Service
 public class Userservice {
     @Autowired
@@ -22,7 +25,13 @@ public class Userservice {
                 user.getPassword()
 
         );
+        System.out.println(user);
         return new ResponseEntity<>(userRepository.save(userEntity), HttpStatus.CREATED);
+    }
+    public List<UserEntity> getAllUsers()
+    {
+        List<UserEntity> li = userRepository.findAll();
+        return  li;
     }
 
 }

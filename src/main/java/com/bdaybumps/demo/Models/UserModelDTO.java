@@ -1,38 +1,25 @@
-package com.bdaybumps.demo.Domains;
+package com.bdaybumps.demo.Models;
 
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
 
-import javax.persistence.*;
-import java.sql.Time;
+
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.sql.Timestamp;
 
-@Entity
-@Table(name="Buser")
-public class UserEntity {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class UserModelDTO {
+
     private String Uid;
     private String firstName;
     private String lastName;
     private String email;
     private String password;
-    @CreationTimestamp
-    @Column(updatable = false)
-    private Timestamp creationDate;
-    @UpdateTimestamp
-    private Timestamp modifiedDate;
-    public UserEntity()
-    {
 
-    }
-    public UserEntity(String firstName,String lastName,String email,String password)
-    {
-        this.firstName= firstName;
-        this.lastName = lastName;
-        this.email = email;
-        this.password = password;
-    }
+
+    private Timestamp creationDate;
+
+    private Timestamp modifiedDate;
     public String getUid(){
         return Uid;
     }
