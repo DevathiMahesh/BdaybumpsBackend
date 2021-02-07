@@ -15,7 +15,17 @@ public class UserModelDTO {
     private String lastName;
     private String email;
     private String password;
+    public UserModelDTO()
+    {
 
+    }
+    public UserModelDTO(String firstName,String lastName,String email,String password)
+    {
+        this.firstName= firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.password = password;
+    }
 
     private Timestamp creationDate;
 
