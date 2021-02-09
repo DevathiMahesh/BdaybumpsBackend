@@ -8,4 +8,5 @@ import javax.persistence.Id;
 @Repository
 public interface UserRepository extends JpaRepository<UserEntity,String> {
     UserEntity findByFirstName(String username);
+    UserEntity findByEmail(String username);
 }

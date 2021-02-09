@@ -49,7 +49,7 @@ class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 //                .formLogin()
 //                 ;
              http.csrf().disable()
-                .authorizeRequests().antMatchers("/authenticate").permitAll()
+                .authorizeRequests().antMatchers("/authenticate","/createuser","/allusers").permitAll()
                      .anyRequest().authenticated().and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
              http.addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
     }

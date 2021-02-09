@@ -15,6 +15,8 @@ import java.util.Optional;
 public class Userservice {
     @Autowired
     private UserRepository userRepository;
+    @Autowired
+    private GmailService gmailService;
     public  ResponseEntity<UserEntity> createUser(UserModelDTO user)
     {
         UserEntity userEntity = new UserEntity(
@@ -26,6 +28,7 @@ public class Userservice {
 
         );
         System.out.println(user);
+        gmailService.sendEmail(user.getFirstName());
         return new ResponseEntity<>(userRepository.save(userEntity), HttpStatus.CREATED);
     }
     public List<UserEntity> getAllUsers()

@@ -5,6 +5,7 @@ import com.bdaybumps.demo.Domains.AuthResponse;
 import com.bdaybumps.demo.Domains.UserEntity;
 import com.bdaybumps.demo.JwtUtil;
 import com.bdaybumps.demo.Models.UserModelDTO;
+import com.bdaybumps.demo.Services.GmailService;
 import com.bdaybumps.demo.Services.MyUserDetailsService;
 import com.bdaybumps.demo.Services.Userservice;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +31,7 @@ public class HomeController {
     private MyUserDetailsService myUserDetailsService;
     @Autowired
     private JwtUtil jwtUtil;
+
     @GetMapping("/")
     public String home(){
         return "Welcome Mahesh!";
@@ -55,6 +57,7 @@ public class HomeController {
        }
        final UserDetails userDetails = myUserDetailsService.loadUserByUsername(temp.getUsername());
        final String jwt = jwtUtil.generateToken(userDetails);
+
        return  ResponseEntity.ok(new AuthResponse(jwt));
     }
 }
