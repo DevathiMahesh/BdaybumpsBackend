@@ -10,9 +10,11 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @Configuration
 class SecurityConfiguration extends WebSecurityConfigurerAdapter {
@@ -22,6 +24,8 @@ class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     }
     @Autowired
     private MyUserDetailsService myUserDetailsService;
+    @Autowired
+    private JwtFilter jwtFilter;
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(myUserDetailsService);
@@ -30,12 +34,12 @@ class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 //                .password(passwordEncoder().encode("user"))// Spring Security 5 requires specifying the password storage format
 //                .roles("USER");
     }
-    @Override
-    public void configure(WebSecurity web) throws Exception {
-        web
-                .ignoring()
-                .antMatchers("/createuser","/authenticate");
-    }
+//    @Override
+//    public void configure(WebSecurity web) throws Exception {
+//        web
+//                .ignoring()
+//                .antMatchers("/createuser","/authenticate");
+//    }
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         // all routes protected
@@ -44,8 +48,10 @@ class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 //                .and()
 //                .formLogin()
 //                 ;
-        http.csrf().disable().authorizeRequests().antMatchers("/authenticate")
-                .permitAll().anyRequest().authenticated();
+             http.csrf().disable()
+                .authorizeRequests().antMatchers("/authenticate").permitAll()
+                     .anyRequest().authenticated().and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+             http.addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
     }
     @Override
     @Bean
