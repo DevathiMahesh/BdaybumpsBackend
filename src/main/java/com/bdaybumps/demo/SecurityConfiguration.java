@@ -29,25 +29,12 @@ class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(myUserDetailsService);
-//        auth.inMemoryAuthentication()
-//                .withUser("user")
-//                .password(passwordEncoder().encode("user"))// Spring Security 5 requires specifying the password storage format
-//                .roles("USER");
+
     }
-//    @Override
-//    public void configure(WebSecurity web) throws Exception {
-//        web
-//                .ignoring()
-//                .antMatchers("/createuser","/authenticate");
-//    }
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        // all routes protected
-//        http.authorizeRequests()
-//                .anyRequest().authenticated()
-//                .and()
-//                .formLogin()
-//                 ;
+
              http.csrf().disable()
                 .authorizeRequests().antMatchers("/bdaybumps/**").permitAll()
                      .and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
