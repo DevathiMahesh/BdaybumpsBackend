@@ -6,6 +6,8 @@ import org.hibernate.annotations.UpdateTimestamp;
 import javax.persistence.*;
 import java.sql.Time;
 import java.sql.Timestamp;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name="Buser")
@@ -22,6 +24,9 @@ public class UserEntity {
     private Timestamp creationDate;
     @UpdateTimestamp
     private Timestamp modifiedDate;
+
+
+
     public UserEntity()
     {
 
@@ -33,6 +38,8 @@ public class UserEntity {
         this.email = email;
         this.password = password;
     }
+
+
     public String getUid(){
         return Uid;
     }
@@ -52,6 +59,8 @@ public class UserEntity {
     public String getPassword() {
         return password;
     }
+
+
 
     public void setEmail(String email) {
         this.email = email;

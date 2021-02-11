@@ -19,6 +19,7 @@ public class GmailService {
         simpleMailMessage.setFrom("noreply@bdaybumps.com");
         simpleMailMessage.setSubject(title);
         simpleMailMessage.setText("Hi "+username+""+body);
+//        simpleMailMessage.setText("With Best Regards, Bdaybumps Team.");
         simpleMailMessage.setTo("d.mahesh995@gmail.com");
         javaMailSender.send(simpleMailMessage);
     }

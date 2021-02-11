@@ -49,8 +49,8 @@ class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 //                .formLogin()
 //                 ;
              http.csrf().disable()
-                .authorizeRequests().antMatchers("/authenticate","/createuser","/allusers").permitAll()
-                     .anyRequest().authenticated().and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+                .authorizeRequests().antMatchers("/bdaybumps/**").permitAll()
+                     .and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
              http.addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
     }
     @Override
