@@ -2,26 +2,60 @@ package com.bdaybumps.demo.Domains;
 
 import javax.persistence.*;
 
-@Entity
-@Table(name="friends")
+@Entity(name="FriendsEntity")
+@Table(name="bfriends")
 public class FriendsEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private String fid;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long fid;
 
 
-    private String status;
+    private String fname;
+    private String femail;
+    private String fphone;
 
-    public String getStatus() {
-        return status;
+    @ManyToOne
+    @JoinColumn(name="buserid",referencedColumnName = "Uid")
+    private UserEntity userEntity;
+    public FriendsEntity()
+    {
+
+    }
+    public FriendsEntity(String fname,String email,String phone)
+    {
+        this.fname = fname;
+        this.femail = femail;
+        this.fphone = fphone;
+    }
+    public Long getFid() {
+        return fid;
     }
 
-
-
-    public void setStatus(String status) {
-        this.status = status;
+    public String getEmail() {
+        return femail;
     }
 
+    public String getFname() {
+        return fname;
+    }
 
+    public String getPhone() {
+        return fphone;
+    }
 
+    public void setFid(Long fid) {
+        this.fid = fid;
+    }
+
+    public void setEmail(String email) {
+        this.femail = email;
+    }
+
+    public void setFname(String fname) {
+        this.fname = fname;
+    }
+
+    public void setPhone(String phone) {
+        this.fphone = phone;
+    }
 }

@@ -6,7 +6,9 @@ import org.hibernate.annotations.UpdateTimestamp;
 import javax.persistence.*;
 import java.sql.Time;
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -14,7 +16,8 @@ import java.util.Set;
 public class UserEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String Uid;
+
+    private Long Uid;
     private String firstName;
     private String lastName;
     private String email;
@@ -24,8 +27,8 @@ public class UserEntity {
     private Timestamp creationDate;
     @UpdateTimestamp
     private Timestamp modifiedDate;
-
-
+    @OneToMany(targetEntity = FriendsEntity.class,mappedBy = "userEntity",cascade = CascadeType.ALL,fetch = FetchType.EAGER,orphanRemoval = true)
+    private List<FriendsEntity> friends = new ArrayList<>();
 
     public UserEntity()
     {
@@ -39,8 +42,15 @@ public class UserEntity {
         this.password = password;
     }
 
+    public List<FriendsEntity> getFriends() {
+        return friends;
+    }
 
-    public String getUid(){
+    public void setFriends(List<FriendsEntity> friends) {
+        this.friends = friends;
+    }
+
+    public Long getUid(){
         return Uid;
     }
 
@@ -78,7 +88,7 @@ public class UserEntity {
         this.password = password;
     }
 
-    public void setUid(String uid) {
+    public void setUid(Long uid) {
         Uid = uid;
     }
 
