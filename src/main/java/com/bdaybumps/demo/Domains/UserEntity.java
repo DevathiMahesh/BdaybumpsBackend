@@ -15,19 +15,20 @@ import java.util.Set;
 @Table(name="Buser")
 public class UserEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-
-    private Long Uid;
-    private String firstName;
-    private String lastName;
-    private String email;
-    private String password;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private String Buid;
+    private String bfirstName;
+    private String blastName;
+    private String bemail;
+    private String bpassword;
     @CreationTimestamp
     @Column(updatable = false)
     private Timestamp creationDate;
     @UpdateTimestamp
     private Timestamp modifiedDate;
-    @OneToMany(targetEntity = FriendsEntity.class,mappedBy = "userEntity",cascade = CascadeType.ALL,fetch = FetchType.EAGER,orphanRemoval = true)
+    @OneToMany(mappedBy = "userEntity",
+            cascade = CascadeType.ALL,fetch = FetchType.EAGER,orphanRemoval = true)
+
     private List<FriendsEntity> friends = new ArrayList<>();
 
     public UserEntity()
@@ -36,10 +37,10 @@ public class UserEntity {
     }
     public UserEntity(String firstName,String lastName,String email,String password)
     {
-        this.firstName= firstName;
-        this.lastName = lastName;
-        this.email = email;
-        this.password = password;
+        this.bfirstName= firstName;
+        this.blastName = lastName;
+        this.bemail = email;
+        this.bpassword = password;
     }
 
     public List<FriendsEntity> getFriends() {
@@ -50,57 +51,57 @@ public class UserEntity {
         this.friends = friends;
     }
 
-    public Long getUid(){
-        return Uid;
+    public String getUid(){
+        return Buid;
     }
 
     public String getFirstName() {
-        return firstName;
+        return bfirstName;
     }
 
     public String getEmail() {
-        return email;
+        return bemail;
     }
 
     public String getLastName() {
-        return lastName;
+        return blastName;
     }
 
     public String getPassword() {
-        return password;
+        return bpassword;
     }
 
 
 
     public void setEmail(String email) {
-        this.email = email;
+        this.bemail = email;
     }
 
     public void setFirstName(String firstName) {
-        this.firstName = firstName;
+        this.bfirstName = firstName;
     }
 
     public void setLastName(String lastName) {
-        this.lastName = lastName;
+        this.blastName = lastName;
     }
 
     public void setPassword(String password) {
-        this.password = password;
+        this.bpassword = password;
     }
 
-    public void setUid(Long uid) {
-        Uid = uid;
+    public void setUid(String uid) {
+        Buid = uid;
     }
 
 
     @Override
     public String toString() {
         return "UserEntity{" +
-                "Uid='" + Uid + '\'' +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", email='" + email + '\'' +
-                ", password='" + password + '\'' +
+                "Uid='" + Buid + '\'' +
+                ", firstName='" + bfirstName + '\'' +
+                ", lastName='" + blastName + '\'' +
+                ", email='" + bemail + '\'' +
+                ", password='" + bpassword + '\'' +
                 '}';
     }
 

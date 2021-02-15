@@ -1,5 +1,7 @@
 package com.bdaybumps.demo.Domains;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 @Entity(name="FriendsEntity")
@@ -15,7 +17,7 @@ public class FriendsEntity {
     private String fphone;
 
     @ManyToOne
-    @JoinColumn(name="buserid",referencedColumnName = "Uid")
+    @JoinColumn(name="buserid",referencedColumnName = "Buid")
     private UserEntity userEntity;
     public FriendsEntity()
     {
