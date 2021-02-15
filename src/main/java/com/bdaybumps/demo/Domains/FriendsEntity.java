@@ -23,6 +23,10 @@ public class FriendsEntity {
     {
 
     }
+    public void setBuser()
+    {
+
+    }
     public FriendsEntity(String fname,String femail,String fphone)
     {
         this.fname = fname;

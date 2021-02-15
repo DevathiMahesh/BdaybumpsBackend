@@ -35,6 +35,10 @@ public class UserEntity {
     {
 
     }
+    public void addEntity(FriendsEntity friendsEntity)
+    {
+        friends.add(friendsEntity);
+    }
     public UserEntity(String firstName,String lastName,String email,String password)
     {
         this.bfirstName= firstName;
