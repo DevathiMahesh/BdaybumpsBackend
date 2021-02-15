@@ -23,7 +23,7 @@ public class FriendsEntity {
     {
 
     }
-    public FriendsEntity(String fname,String email,String phone)
+    public FriendsEntity(String fname,String femail,String fphone)
     {
         this.fname = fname;
         this.femail = femail;
@@ -49,15 +49,15 @@ public class FriendsEntity {
         this.fid = fid;
     }
 
-    public void setEmail(String email) {
-        this.femail = email;
+    public void setEmail(String femail) {
+        this.femail = femail;
     }
 
     public void setFname(String fname) {
         this.fname = fname;
     }
 
-    public void setPhone(String phone) {
-        this.fphone = phone;
+    public void setPhone(String fphone) {
+        this.fphone = fphone;
     }
 }

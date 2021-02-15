@@ -28,6 +28,7 @@ public class FriendsController {
     {
         FriendsEntity f = new FriendsEntity(createFriendDTO.getFname(),createFriendDTO.getFemail(),createFriendDTO.getFphone());
         friendsRepository.save(f);
+
         return "Friend added successfully";
     }
 
