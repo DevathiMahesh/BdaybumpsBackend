@@ -10,75 +10,76 @@ import java.sql.Timestamp;
 
 public class UserModelDTO {
 
-    private String Uid;
-    private String firstName;
-    private String lastName;
-    private String email;
-    private String password;
+    private Long Buid;
+    private String bfirstName;
+    private String blastName;
+    private String bemail;
+    private String bpassword;
     public UserModelDTO()
     {
 
     }
-    public UserModelDTO(String firstName,String lastName,String email,String password)
+    public UserModelDTO(Long uid,String firstName,String lastName,String email,String password)
     {
-        this.firstName= firstName;
-        this.lastName = lastName;
-        this.email = email;
-        this.password = password;
+        this.Buid = uid;
+        this.bfirstName= firstName;
+        this.blastName = lastName;
+        this.bemail = email;
+        this.bpassword = password;
     }
 
     private Timestamp creationDate;
 
     private Timestamp modifiedDate;
-    public String getUid(){
-        return Uid;
+    public Long getUid(){
+        return Buid;
     }
 
     public String getFirstName() {
-        return firstName;
+        return bfirstName;
     }
 
     public String getEmail() {
-        return email;
+        return bemail;
     }
 
     public String getLastName() {
-        return lastName;
+        return blastName;
     }
 
     public String getPassword() {
-        return password;
+        return bpassword;
     }
 
     public void setEmail(String email) {
-        this.email = email;
+        this.bemail = email;
     }
 
     public void setFirstName(String firstName) {
-        this.firstName = firstName;
+        this.bfirstName = firstName;
     }
 
     public void setLastName(String lastName) {
-        this.lastName = lastName;
+        this.blastName = lastName;
     }
 
     public void setPassword(String password) {
-        this.password = password;
+        this.bpassword = password;
     }
 
-    public void setUid(String uid) {
-        Uid = uid;
+    public void setUid(Long uid) {
+        this.Buid = uid;
     }
 
 
     @Override
     public String toString() {
         return "UserEntity{" +
-                "Uid='" + Uid + '\'' +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", email='" + email + '\'' +
-                ", password='" + password + '\'' +
+                "Buid ="+Buid+
+                ", firstName='" + bfirstName + '\'' +
+                ", lastName='" + blastName + '\'' +
+                ", email='" + bemail + '\'' +
+                ", password='" + bpassword + '\'' +
                 '}';
     }
 

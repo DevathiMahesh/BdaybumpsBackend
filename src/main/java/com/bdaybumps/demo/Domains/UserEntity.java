@@ -15,8 +15,8 @@ import java.util.Set;
 @Table(name="Buser")
 public class UserEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private String Buid;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long Buid;
     private String bfirstName;
     private String blastName;
     private String bemail;
@@ -55,7 +55,7 @@ public class UserEntity {
         this.friends = friends;
     }
 
-    public String getUid(){
+    public Long getUid(){
         return Buid;
     }
 
@@ -93,7 +93,7 @@ public class UserEntity {
         this.bpassword = password;
     }
 
-    public void setUid(String uid) {
+    public void setUid(Long uid) {
         Buid = uid;
     }
 

@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 
 import javax.persistence.Id;
 @Repository
-public interface UserRepository extends JpaRepository<UserEntity,String> {
+public interface UserRepository extends JpaRepository<UserEntity,Long> {
     UserEntity findByBfirstName(String username);
     UserEntity findByBemail(String username);
 }

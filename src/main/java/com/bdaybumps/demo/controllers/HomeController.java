@@ -37,11 +37,11 @@ public class HomeController {
         return "Welcome Mahesh!";
     }
     @PostMapping("/createuser")
-    public ResponseEntity<UserEntity> createUser(@RequestBody  UserModelDTO user)
+    public ResponseEntity<UserEntity> createUser(@RequestBody  UserModelDTO temp)
     {
 
-        System.out.println("In Home controller"+user);
-        return userservice.createUser(user);
+        System.out.println("In Home controller"+temp);
+        return userservice.createUser(temp);
     }
     @GetMapping("/allusers")
     public List<UserEntity> getAllUsers()

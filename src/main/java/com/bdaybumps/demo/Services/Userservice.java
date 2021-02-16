@@ -23,7 +23,7 @@ public class Userservice {
     Logger logger = LoggerFactory.getLogger(LoggingController.class);
     public  ResponseEntity<UserEntity> createUser(UserModelDTO user)
     {
-        UserEntity userEntity = new UserEntity(
+        UserEntity temp = new UserEntity(
 
                 user.getEmail(),
                 user.getFirstName(),
@@ -32,9 +32,9 @@ public class Userservice {
 
         );
         System.out.println(user);
-        gmailService.sendEmail(user.getFirstName());
+//        gmailService.sendEmail(user.getFirstName());
         logger.info("New User Created.An Email is sent.");
-        return new ResponseEntity<>(userRepository.save(userEntity), HttpStatus.CREATED);
+        return new ResponseEntity<>(userRepository.save(temp), HttpStatus.CREATED);
     }
     public List<UserEntity> getAllUsers()
     {
