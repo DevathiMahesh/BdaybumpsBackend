@@ -28,7 +28,8 @@ public class Userservice {
                 user.getEmail(),
                 user.getFirstName(),
                 user.getLastName(),
-                user.getPassword()
+                user.getPassword(),
+                user.getFriendsList()
 
         );
         System.out.println(user);

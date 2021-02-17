@@ -41,12 +41,13 @@ public class UserEntity {
     {
         this.friends.add(friendsEntity);
     }
-    public UserEntity(String firstName,String lastName,String email,String password)
+    public UserEntity(String firstName,String lastName,String email,String password,List<FriendsEntity> friends)
     {
         this.bfirstName= firstName;
         this.blastName = lastName;
         this.bemail = email;
         this.bpassword = password;
+        this.friends = friends;
     }
 
     public List<FriendsEntity> getFriends() {
