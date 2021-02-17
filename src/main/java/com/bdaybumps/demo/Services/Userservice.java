@@ -25,9 +25,10 @@ public class Userservice {
     {
         UserEntity temp = new UserEntity(
 
-                user.getEmail(),
+
                 user.getFirstName(),
                 user.getLastName(),
+                user.getEmail(),
                 user.getPassword(),
                 user.getFriendsList()
 
