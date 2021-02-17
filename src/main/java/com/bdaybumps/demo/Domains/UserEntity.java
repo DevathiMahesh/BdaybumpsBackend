@@ -4,6 +4,7 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
+import javax.transaction.Transactional;
 import java.sql.Time;
 import java.sql.Timestamp;
 import java.util.ArrayList;
@@ -13,6 +14,7 @@ import java.util.Set;
 
 @Entity
 @Table(name="Buser")
+@Transactional
 public class UserEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,7 +31,7 @@ public class UserEntity {
     @OneToMany(mappedBy = "userEntity",
             cascade = CascadeType.ALL,fetch = FetchType.EAGER,orphanRemoval = true)
 
-    private List<FriendsEntity> friends = new ArrayList<>();
+    private List<FriendsEntity> friends;
 
     public UserEntity()
     {
@@ -37,7 +39,7 @@ public class UserEntity {
     }
     public void addEntity(FriendsEntity friendsEntity)
     {
-        friends.add(friendsEntity);
+        this.friends.add(friendsEntity);
     }
     public UserEntity(String firstName,String lastName,String email,String password)
     {
@@ -53,6 +55,7 @@ public class UserEntity {
 
     public void setFriends(List<FriendsEntity> friends) {
         this.friends = friends;
+        System.out.print("new friends list"+friends);
     }
 
     public Long getUid(){
@@ -94,7 +97,7 @@ public class UserEntity {
     }
 
     public void setUid(Long uid) {
-        Buid = uid;
+        this.Buid = uid;
     }
 
 
