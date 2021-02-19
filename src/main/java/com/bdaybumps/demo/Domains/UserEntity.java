@@ -57,7 +57,10 @@ public class UserEntity {
 
     public void setFriends(List<FriendsEntity> friends) {
         this.friends = friends;
-        System.out.print("new friends list"+friends);
+        for(FriendsEntity f:friends)
+        {
+            f.setUserEntity(this);
+        }
     }
 
     public void setNotifications(List<NotifyEntity> notifications) {

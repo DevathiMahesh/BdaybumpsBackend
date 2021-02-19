@@ -24,7 +24,7 @@ public class FriendsService {
 
     public void createFriend(FriendsEntity friendsEntity)
     {
-        UserEntity t = userRepository.findByBemail("Mahesh");
+        UserEntity t = userRepository.findByBemail("d.mahesh995@gmail.com");
         List<FriendsEntity> friends = t.getFriends();
         friends.add(friendsEntity);
         System.out.print("Friends..."+friends);

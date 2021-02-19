@@ -32,6 +32,15 @@ public class FriendsEntity {
         this.fphone = fphone;
         this.dob = dob;
     }
+
+    public void setUserEntity(UserEntity userEntity) {
+        this.userEntity = userEntity;
+    }
+
+    public UserEntity getUserEntity() {
+        return userEntity;
+    }
+
     public Long getFid() {
         return fid;
     }

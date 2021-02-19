@@ -26,21 +26,21 @@ public class BdaybumpsBackendApplication implements CommandLineRunner {
    @Override
 	public void run(String... arg0) throws Exception {
 
-	   NotifyEntity n1 = new NotifyEntity();
-	   n1.setNtitle("t1");
-	   n1.setNdescription("d1");
-	   NotifyEntity n2 = new NotifyEntity();
-	   n2.setNtitle("t1");
-	   n2.setNdescription("d1");
-	   UserEntity u1 = userRepository.findByBemail("d.mahesh995@gmail.com");
-       List li = new ArrayList<>();
-       li.add(n1);
-       li.add(n2);
-       u1.setNotifications(li);
-       notifyRepository.save(n1);
-       notifyRepository.save(n2);
-       userRepository.save(u1);
-       System.out.println(userRepository.findAll());
-       System.out.println(notifyRepository.findAll());
+//	   NotifyEntity n1 = new NotifyEntity();
+//	   n1.setNtitle("t1");
+//	   n1.setNdescription("d1");
+//	   NotifyEntity n2 = new NotifyEntity();
+//	   n2.setNtitle("t1");
+//	   n2.setNdescription("d1");
+//	   UserEntity u1 = userRepository.findByBemail("d.mahesh995@gmail.com");
+//       List li = new ArrayList<>();
+//       li.add(n1);
+//       li.add(n2);
+//       u1.setNotifications(li);
+//       notifyRepository.save(n1);
+//       notifyRepository.save(n2);
+//       userRepository.save(u1);
+//       System.out.println(userRepository.findAll());
+//       System.out.println(notifyRepository.findAll());
 	}
 }
