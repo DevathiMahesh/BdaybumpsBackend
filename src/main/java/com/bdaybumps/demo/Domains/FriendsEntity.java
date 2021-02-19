@@ -1,5 +1,6 @@
 package com.bdaybumps.demo.Domains;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
@@ -19,7 +20,8 @@ public class FriendsEntity {
     private Date dob;
     @ManyToOne
     @JoinColumn(name="buserid",referencedColumnName = "Buid")
-    private UserEntity userEntity;
+    @JsonBackReference
+    private UserEntity user1;
     public FriendsEntity()
     {
 
@@ -34,11 +36,11 @@ public class FriendsEntity {
     }
 
     public void setUserEntity(UserEntity userEntity) {
-        this.userEntity = userEntity;
+        this.user1 = userEntity;
     }
 
     public UserEntity getUserEntity() {
-        return userEntity;
+        return user1;
     }
 
     public Long getFid() {
@@ -89,7 +91,7 @@ public class FriendsEntity {
                 ", femail='" + femail + '\'' +
                 ", fphone='" + fphone + '\'' +
                 ", dob=" + dob +
-                ", userEntity=" + userEntity +
+                ", userEntity=" + user1 +
                 '}';
     }
 }

@@ -29,7 +29,8 @@ public class UserEntity {
     private Timestamp creationDate;
     @UpdateTimestamp
     private Timestamp modifiedDate;
-    @OneToMany(mappedBy = "userEntity",cascade = CascadeType.ALL,fetch = FetchType.EAGER,orphanRemoval = true)
+    @OneToMany(mappedBy = "user1",targetEntity = FriendsEntity.class,cascade = CascadeType.ALL,fetch = FetchType.LAZY,orphanRemoval = true)
+    @JsonManagedReference
     private List<FriendsEntity> friends;
     @OneToMany(mappedBy = "user2",targetEntity = NotifyEntity.class,cascade = CascadeType.ALL,fetch = FetchType.LAZY,orphanRemoval = true)
     @JsonManagedReference

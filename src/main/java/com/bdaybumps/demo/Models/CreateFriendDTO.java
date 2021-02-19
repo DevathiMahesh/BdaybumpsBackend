@@ -3,7 +3,7 @@ package com.bdaybumps.demo.Models;
 import java.util.Date;
 
 public class CreateFriendDTO {
-    private Long Buid;
+
     private String fname;
     private String fphone;
     private String femail;
@@ -16,9 +16,7 @@ public class CreateFriendDTO {
         this.dob = dob;
     }
 
-    public void setBuid(Long buid) {
-        this.Buid = buid;
-    }
+
 
     public void setFemail(String femail) {
         this.femail = femail;
@@ -36,9 +34,7 @@ public class CreateFriendDTO {
         return dob;
     }
 
-    public Long getBuid() {
-        return Buid;
-    }
+
 
     public String getFemail() {
         return femail;
@@ -51,7 +47,7 @@ public class CreateFriendDTO {
     @Override
     public String toString() {
         return "CreateFriendDTO{" +
-                "Buid=" + Buid +
+
                 ", fname='" + fname + '\'' +
                 ", fphone='" + fphone + '\'' +
                 ", femail='" + femail + '\'' +

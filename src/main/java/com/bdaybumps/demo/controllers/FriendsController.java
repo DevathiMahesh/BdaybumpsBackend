@@ -6,6 +6,7 @@ import com.bdaybumps.demo.Models.CreateFriendDTO;
 import com.bdaybumps.demo.Repository.FriendsRepository;
 import com.bdaybumps.demo.Repository.UserRepository;
 import com.bdaybumps.demo.Services.FriendsService;
+import kafka.security.auth.Create;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -31,11 +32,7 @@ public class FriendsController {
     @PostMapping("/createfriend")
     public String createFriend(@RequestBody CreateFriendDTO createFriendDTO)
     {
-        FriendsEntity f = new FriendsEntity(createFriendDTO.getFname(),createFriendDTO.getFemail(),createFriendDTO.getFphone(),createFriendDTO.getDob());
-        friendsRepository.save(f);
-        friendsService.createFriend(f);
-
-        return "Friend added successfully";
+        return friendsService.createFriend(createFriendDTO);
     }
 
 }
