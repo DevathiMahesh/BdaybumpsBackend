@@ -1,5 +1,6 @@
 package com.bdaybumps.demo.Domains;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import org.apache.kafka.common.protocol.types.Field;
 
 import javax.persistence.*;
@@ -12,9 +13,20 @@ public class NotifyEntity {
     private Long nid;
     private String ntitle;
     private String ndescription;
-
+    @ManyToOne
+    @JoinColumn(name="notify_id",referencedColumnName = "Buid")
+    @JsonBackReference
+    private UserEntity user2;
     public void setNid(Long nid) {
         this.nid = nid;
+    }
+
+    public void setUser2(UserEntity user2) {
+        this.user2 = user2;
+    }
+
+    public UserEntity getUser2() {
+        return user2;
     }
 
     public void setNdescription(String ndescription) {

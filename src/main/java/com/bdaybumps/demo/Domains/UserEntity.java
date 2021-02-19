@@ -1,5 +1,6 @@
 package com.bdaybumps.demo.Domains;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -28,11 +29,11 @@ public class UserEntity {
     private Timestamp creationDate;
     @UpdateTimestamp
     private Timestamp modifiedDate;
-    @OneToMany(mappedBy = "userEntity",
-            cascade = CascadeType.ALL,fetch = FetchType.EAGER,orphanRemoval = true)
-
+    @OneToMany(mappedBy = "userEntity",cascade = CascadeType.ALL,fetch = FetchType.EAGER,orphanRemoval = true)
     private List<FriendsEntity> friends;
-
+    @OneToMany(mappedBy = "user2",targetEntity = NotifyEntity.class,cascade = CascadeType.ALL,fetch = FetchType.LAZY,orphanRemoval = true)
+    @JsonManagedReference
+    private List<NotifyEntity> notifications;
     public UserEntity()
     {
 
@@ -57,6 +58,18 @@ public class UserEntity {
     public void setFriends(List<FriendsEntity> friends) {
         this.friends = friends;
         System.out.print("new friends list"+friends);
+    }
+
+    public void setNotifications(List<NotifyEntity> notifications) {
+        this.notifications = notifications;
+        for(NotifyEntity i:notifications)
+        {
+            i.setUser2(this);
+        }
+    }
+
+    public List<NotifyEntity> getNotifications() {
+        return notifications;
     }
 
     public Long getUid(){
