@@ -8,6 +8,6 @@ import javax.persistence.Id;
 @Repository
 public interface UserRepository extends JpaRepository<UserEntity,Long> {
     UserEntity findByBfirstName(String username);
-//    UserEntity findByBuid(Long Buid);
+    UserEntity findByBuid(Long Buid);
     UserEntity findByBemail(String username);
 }

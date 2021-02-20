@@ -19,7 +19,7 @@ import java.util.Set;
 public class UserEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long Buid;
+    private Long buid;
     private String bfirstName;
     private String blastName;
     private String bemail;
@@ -77,7 +77,7 @@ public class UserEntity {
     }
 
     public Long getUid(){
-        return Buid;
+        return buid;
     }
 
     public String getFirstName() {
@@ -115,14 +115,14 @@ public class UserEntity {
     }
 
     public void setUid(Long uid) {
-        this.Buid = uid;
+        this.buid = uid;
     }
 
 
     @Override
     public String toString() {
         return "UserEntity{" +
-                "Uid='" + Buid + '\'' +
+                "Uid='" + buid + '\'' +
                 ", firstName='" + bfirstName + '\'' +
                 ", lastName='" + blastName + '\'' +
                 ", email='" + bemail + '\'' +

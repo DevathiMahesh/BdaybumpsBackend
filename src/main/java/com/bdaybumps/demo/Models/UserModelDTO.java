@@ -13,7 +13,7 @@ import java.util.List;
 
 public class UserModelDTO {
 
-    private Long Buid;
+    private Long buid;
     private String bfirstName;
     private String blastName;
     private String bemail;
@@ -25,7 +25,7 @@ public class UserModelDTO {
     }
     public UserModelDTO(Long uid,String firstName,String lastName,String email,String password,List<FriendsEntity> friendsList)
     {
-        this.Buid = uid;
+        this.buid = uid;
         this.bfirstName= firstName;
         this.blastName = lastName;
         this.bemail = email;
@@ -37,7 +37,7 @@ public class UserModelDTO {
 
     private Timestamp modifiedDate;
     public Long getUid(){
-        return Buid;
+        return buid;
     }
 
     public String getFirstName() {
@@ -77,7 +77,7 @@ public class UserModelDTO {
     }
 
     public void setUid(Long uid) {
-        this.Buid = uid;
+        this.buid = uid;
     }
 
     public void setFriendsList(List<FriendsEntity> friendsList) {
@@ -87,7 +87,7 @@ public class UserModelDTO {
     @Override
     public String toString() {
         return "UserEntity{" +
-                "Buid ="+Buid+
+                "Buid ="+buid+
                 ", firstName='" + bfirstName + '\'' +
                 ", lastName='" + blastName + '\'' +
                 ", email='" + bemail + '\'' +
