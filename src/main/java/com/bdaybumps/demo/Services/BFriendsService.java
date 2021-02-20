@@ -29,9 +29,9 @@ public class BFriendsService {
     {
         BfriendEntity f = new BfriendEntity();
         f.setFname(createFriendDTO.getFname());
-        f.setFPhone(createFriendDTO.getFphone());
-        f.setDob(createFriendDTO.getDob());
-        f.setEmail(createFriendDTO.getFemail());
+        f.setFphone(createFriendDTO.getFphone());
+        f.setFdob(createFriendDTO.getFdob());
+        f.setFemail(createFriendDTO.getFemail());
         friendsRepository.save(f);
 
         BuserEntity t = userRepository.findByBemail("d.mahesh995@gmail.com");
