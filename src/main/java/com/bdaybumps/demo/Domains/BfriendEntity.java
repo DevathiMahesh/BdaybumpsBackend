@@ -19,7 +19,7 @@ public class BfriendEntity {
     private String fphone;
     private Date fdob;
     @ManyToOne
-    @JoinColumn(name="bfriend_id",referencedColumnName = "Buid")
+    @JoinColumn(name="bfriend_id",referencedColumnName = "buid")
     @JsonBackReference
     private BuserEntity user1;
     public BfriendEntity()
@@ -35,43 +35,11 @@ public class BfriendEntity {
         this.fdob = fdob;
     }
 
-    public void setUserEntity(BuserEntity user1) {
-        this.user1 = user1;
+    public void setFphone(String fphone) {
+        this.fphone = fphone;
     }
 
-    public BuserEntity getUserEntity() {
-        return user1;
-    }
-
-    public Long getFid() {
-        return fid;
-    }
-
-    public Date getDob() {
-        return fdob;
-    }
-
-    public String getEmail() {
-        return femail;
-    }
-
-    public String getFname() {
-        return fname;
-    }
-
-    public String getPhone() {
-        return fphone;
-    }
-
-    public void setFid(Long fid) {
-        this.fid = fid;
-    }
-
-    public void setDob(Date dob) {
-        this.fdob = dob;
-    }
-
-    public void setEmail(String femail) {
+    public void setFemail(String femail) {
         this.femail = femail;
     }
 
@@ -79,19 +47,51 @@ public class BfriendEntity {
         this.fname = fname;
     }
 
-    public void setFPhone(String fphone) {
-        this.fphone = fphone;
+    public void setFid(Long fid) {
+        this.fid = fid;
+    }
+
+    public void setFdob(Date fdob) {
+        this.fdob = fdob;
+    }
+
+    public void setUser1(BuserEntity user1) {
+        this.user1 = user1;
+    }
+
+    public BuserEntity getUser1() {
+        return user1;
+    }
+
+    public String getFphone() {
+        return fphone;
+    }
+
+    public String getFemail() {
+        return femail;
+    }
+
+    public String getFname() {
+        return fname;
+    }
+
+    public Date getFdob() {
+        return fdob;
+    }
+
+    public Long getFid() {
+        return fid;
     }
 
     @Override
     public String toString() {
-        return "FriendsEntity{" +
+        return "BfriendEntity{" +
                 "fid=" + fid +
                 ", fname='" + fname + '\'' +
                 ", femail='" + femail + '\'' +
                 ", fphone='" + fphone + '\'' +
                 ", fdob=" + fdob +
-                ", userEntity=" + user1 +
+                ", user1=" + user1 +
                 '}';
     }
 }

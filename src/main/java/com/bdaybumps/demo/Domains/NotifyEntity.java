@@ -14,7 +14,7 @@ public class NotifyEntity {
     private String ntitle;
     private String ndescription;
     @ManyToOne
-    @JoinColumn(name="notify_id",referencedColumnName = "Buid")
+    @JoinColumn(name="notify_id",referencedColumnName = "buid")
     @JsonBackReference
     private BuserEntity user2;
     public void setNid(Long nid) {

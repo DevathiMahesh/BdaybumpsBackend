@@ -12,8 +12,8 @@ public class CreateFriendDTO {
         this.fname = fname;
     }
 
-    public void setDob(Date dob) {
-        this.fdob = dob;
+    public void setDob(Date fdob) {
+        this.fdob = fdob;
     }
 
 
@@ -30,7 +30,7 @@ public class CreateFriendDTO {
         return fname;
     }
 
-    public Date getDob() {
+    public Date getFdob() {
         return fdob;
     }
 

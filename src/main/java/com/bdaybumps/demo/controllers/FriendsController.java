@@ -27,6 +27,7 @@ public class FriendsController {
     @PostMapping("/createfriend")
     public String createFriend(@RequestBody CreateFriendDTO createFriendDTO)
     {
+        System.out.print(createFriendDTO);
         return friendsService.createFriend(createFriendDTO);
     }
 
