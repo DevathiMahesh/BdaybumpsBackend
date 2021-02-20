@@ -2,12 +2,8 @@ package com.bdaybumps.demo.Models;
 
 
 
-import com.bdaybumps.demo.Domains.FriendsEntity;
+import com.bdaybumps.demo.Domains.BfriendEntity;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import java.sql.Timestamp;
 import java.util.List;
 
@@ -18,81 +14,91 @@ public class UserModelDTO {
     private String blastName;
     private String bemail;
     private String bpassword;
-    private List<FriendsEntity> friendsList;
+
     public UserModelDTO()
     {
 
     }
-    public UserModelDTO(Long uid,String firstName,String lastName,String email,String password,List<FriendsEntity> friendsList)
+    public UserModelDTO(Long buid,String bfirstName,String blastName,String bemail,String bpassword)
     {
-        this.buid = uid;
-        this.bfirstName= firstName;
-        this.blastName = lastName;
-        this.bemail = email;
-        this.bpassword = password;
-        this.friendsList = friendsList;
+        this.buid = buid;
+        this.bfirstName= bfirstName;
+        this.blastName = blastName;
+        this.bemail = bemail;
+        this.bpassword = bpassword;
+
     }
 
     private Timestamp creationDate;
 
     private Timestamp modifiedDate;
-    public Long getUid(){
+
+    public void setBuid(Long buid) {
+        this.buid = buid;
+    }
+
+    public void setBemail(String bemail) {
+        this.bemail = bemail;
+    }
+
+    public void setBfirstName(String bfirstName) {
+        this.bfirstName = bfirstName;
+    }
+
+    public void setBlastName(String blastName) {
+        this.blastName = blastName;
+    }
+
+    public void setBpassword(String bpassword) {
+        this.bpassword = bpassword;
+    }
+
+    public void setCreationDate(Timestamp creationDate) {
+        this.creationDate = creationDate;
+    }
+
+    public void setModifiedDate(Timestamp modifiedDate) {
+        this.modifiedDate = modifiedDate;
+    }
+
+    public Long getBuid() {
         return buid;
     }
 
-    public String getFirstName() {
-        return bfirstName;
-    }
-
-    public String getEmail() {
+    public String getBemail() {
         return bemail;
     }
 
-    public String getLastName() {
+    public String getBfirstName() {
+        return bfirstName;
+    }
+
+    public String getBlastName() {
         return blastName;
     }
 
-    public String getPassword() {
+    public String getBpassword() {
         return bpassword;
     }
 
-    public List<FriendsEntity> getFriendsList() {
-        return friendsList;
+    public Timestamp getCreationDate() {
+        return creationDate;
     }
 
-    public void setEmail(String email) {
-        this.bemail = email;
-    }
-
-    public void setFirstName(String firstName) {
-        this.bfirstName = firstName;
-    }
-
-    public void setLastName(String lastName) {
-        this.blastName = lastName;
-    }
-
-    public void setPassword(String password) {
-        this.bpassword = password;
-    }
-
-    public void setUid(Long uid) {
-        this.buid = uid;
-    }
-
-    public void setFriendsList(List<FriendsEntity> friendsList) {
-        this.friendsList = friendsList;
+    public Timestamp getModifiedDate() {
+        return modifiedDate;
     }
 
     @Override
     public String toString() {
-        return "UserEntity{" +
-                "Buid ="+buid+
-                ", firstName='" + bfirstName + '\'' +
-                ", lastName='" + blastName + '\'' +
-                ", email='" + bemail + '\'' +
-                ", password='" + bpassword + '\'' +
+        return "UserModelDTO{" +
+                "buid=" + buid +
+                ", bfirstName='" + bfirstName + '\'' +
+                ", blastName='" + blastName + '\'' +
+                ", bemail='" + bemail + '\'' +
+                ", bpassword='" + bpassword + '\'' +
+                ", creationDate=" + creationDate +
+                ", modifiedDate=" + modifiedDate +
                 '}';
     }
-
 }

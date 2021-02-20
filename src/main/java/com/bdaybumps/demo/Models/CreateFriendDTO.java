@@ -7,13 +7,13 @@ public class CreateFriendDTO {
     private String fname;
     private String fphone;
     private String femail;
-    private Date dob;
+    private Date fdob;
     public void setFname(String fname) {
         this.fname = fname;
     }
 
     public void setDob(Date dob) {
-        this.dob = dob;
+        this.fdob = dob;
     }
 
 
@@ -31,7 +31,7 @@ public class CreateFriendDTO {
     }
 
     public Date getDob() {
-        return dob;
+        return fdob;
     }
 
 
@@ -51,7 +51,7 @@ public class CreateFriendDTO {
                 ", fname='" + fname + '\'' +
                 ", fphone='" + fphone + '\'' +
                 ", femail='" + femail + '\'' +
-                ", dob=" + dob +
+                ", fdob=" + fdob +
                 '}';
     }
 }

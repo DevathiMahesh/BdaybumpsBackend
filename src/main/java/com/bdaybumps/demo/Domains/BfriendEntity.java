@@ -6,9 +6,9 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import javax.persistence.*;
 import java.util.Date;
 
-@Entity(name="FriendsEntity")
+@Entity
 @Table(name="bfriends")
-public class FriendsEntity {
+public class BfriendEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long fid;
@@ -17,29 +17,29 @@ public class FriendsEntity {
     private String fname;
     private String femail;
     private String fphone;
-    private Date dob;
+    private Date fdob;
     @ManyToOne
-    @JoinColumn(name="buserid",referencedColumnName = "Buid")
+    @JoinColumn(name="bfriend_id",referencedColumnName = "Buid")
     @JsonBackReference
-    private UserEntity user1;
-    public FriendsEntity()
+    private BuserEntity user1;
+    public BfriendEntity()
     {
 
     }
 
-    public FriendsEntity(String fname,String femail,String fphone,Date dob)
+    public BfriendEntity(String fname,String femail,String fphone,Date fdob)
     {
         this.fname = fname;
         this.femail = femail;
         this.fphone = fphone;
-        this.dob = dob;
+        this.fdob = fdob;
     }
 
-    public void setUserEntity(UserEntity userEntity) {
-        this.user1 = userEntity;
+    public void setUserEntity(BuserEntity user1) {
+        this.user1 = user1;
     }
 
-    public UserEntity getUserEntity() {
+    public BuserEntity getUserEntity() {
         return user1;
     }
 
@@ -48,7 +48,7 @@ public class FriendsEntity {
     }
 
     public Date getDob() {
-        return dob;
+        return fdob;
     }
 
     public String getEmail() {
@@ -68,7 +68,7 @@ public class FriendsEntity {
     }
 
     public void setDob(Date dob) {
-        this.dob = dob;
+        this.fdob = dob;
     }
 
     public void setEmail(String femail) {
@@ -79,7 +79,7 @@ public class FriendsEntity {
         this.fname = fname;
     }
 
-    public void setPhone(String fphone) {
+    public void setFPhone(String fphone) {
         this.fphone = fphone;
     }
 
@@ -90,7 +90,7 @@ public class FriendsEntity {
                 ", fname='" + fname + '\'' +
                 ", femail='" + femail + '\'' +
                 ", fphone='" + fphone + '\'' +
-                ", dob=" + dob +
+                ", fdob=" + fdob +
                 ", userEntity=" + user1 +
                 '}';
     }

@@ -1,9 +1,10 @@
 package com.bdaybumps.demo;
 
 import com.bdaybumps.demo.Domains.NotifyEntity;
-import com.bdaybumps.demo.Domains.UserEntity;
+
+import com.bdaybumps.demo.Repository.BuserRepository;
 import com.bdaybumps.demo.Repository.NotifyRepository;
-import com.bdaybumps.demo.Repository.UserRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -17,7 +18,7 @@ import java.util.List;
 @EnableJpaRepositories
 public class BdaybumpsBackendApplication implements CommandLineRunner {
 	@Autowired
-	private UserRepository userRepository;
+	private BuserRepository userRepository;
 	@Autowired
 	private NotifyRepository notifyRepository;
 	public static void main(String[] args) {

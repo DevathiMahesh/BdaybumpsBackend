@@ -1,12 +1,11 @@
 package com.bdaybumps.demo.Services;
 
-import com.bdaybumps.demo.Domains.FriendsEntity;
-import com.bdaybumps.demo.Domains.NotifyEntity;
-import com.bdaybumps.demo.Domains.UserEntity;
-import com.bdaybumps.demo.Repository.UserRepository;
-import org.apache.coyote.Response;
+import com.bdaybumps.demo.Domains.BfriendEntity;
+import com.bdaybumps.demo.Domains.BuserEntity;
+;
+import com.bdaybumps.demo.Repository.BuserRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
@@ -14,28 +13,28 @@ import java.util.*;
 @Service
 public class BdayTimelineService {
     @Autowired
-    private UserRepository userRepository;
+    private BuserRepository userRepository;
     private List todaystars = new ArrayList();
     private List weekstars = new ArrayList();
     private List monthstars = new ArrayList();
-    private Map<String,List<FriendsEntity>> response = new HashMap<String,List<FriendsEntity>>();
+    private Map<String,List<BfriendEntity>> response = new HashMap<String,List<BfriendEntity>>();
     public Date d = new Date();
-    public void getTodayStars(List<FriendsEntity> li)
+    public void getTodayStars(List<BfriendEntity> li)
     {
           response.put("day",li);
     }
-    public void getWeekStars(List<FriendsEntity> li)
+    public void getWeekStars(List<BfriendEntity> li)
     {
 
     }
-    public void getMonthStars(List<FriendsEntity> li)
+    public void getMonthStars(List<BfriendEntity> li)
     {
 
     }
-    public Map<String,List<FriendsEntity>> getBdayTimeline(Long buid)
+    public Map<String,List<BfriendEntity>> getBdayTimeline(Long buid)
     {
-        UserEntity u = userRepository.findByBuid(buid);
-        List<FriendsEntity> li = u.getFriends();
+        BuserEntity u = userRepository.findByBuid(buid);
+        List<BfriendEntity> li = u.getBfriends();
         this.getTodayStars(li);
         return this.response;
 

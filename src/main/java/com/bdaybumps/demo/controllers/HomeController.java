@@ -2,7 +2,8 @@ package com.bdaybumps.demo.controllers;
 
 import com.bdaybumps.demo.Domains.AuthRequest;
 import com.bdaybumps.demo.Domains.AuthResponse;
-import com.bdaybumps.demo.Domains.UserEntity;
+import com.bdaybumps.demo.Domains.BuserEntity;
+
 import com.bdaybumps.demo.JwtUtil;
 import com.bdaybumps.demo.Models.UserModelDTO;
 import com.bdaybumps.demo.Services.GmailService;
@@ -34,14 +35,14 @@ public class HomeController {
         return "Welcome Mahesh!";
     }
     @PostMapping("/createuser")
-    public ResponseEntity<UserEntity> createUser(@RequestBody  UserModelDTO temp)
+    public ResponseEntity<BuserEntity> createUser(@RequestBody  UserModelDTO temp)
     {
 
         System.out.println("In Home controller"+temp);
         return userservice.createUser(temp);
     }
     @GetMapping("/allusers")
-    public List<UserEntity> getAllUsers()
+    public List<BuserEntity> getAllUsers()
     {
         return userservice.getAllUsers();
     }

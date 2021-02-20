@@ -16,16 +16,16 @@ public class NotifyEntity {
     @ManyToOne
     @JoinColumn(name="notify_id",referencedColumnName = "Buid")
     @JsonBackReference
-    private UserEntity user2;
+    private BuserEntity user2;
     public void setNid(Long nid) {
         this.nid = nid;
     }
 
-    public void setUser2(UserEntity user2) {
+    public void setUser2(BuserEntity user2) {
         this.user2 = user2;
     }
 
-    public UserEntity getUser2() {
+    public BuserEntity getUser2() {
         return user2;
     }
 

@@ -1,8 +1,10 @@
 package com.bdaybumps.demo.Services;
 
-import com.bdaybumps.demo.Domains.UserEntity;
+import com.bdaybumps.demo.Domains.BuserEntity;
+
 import com.bdaybumps.demo.Models.UserModelDTO;
-import com.bdaybumps.demo.Repository.UserRepository;
+import com.bdaybumps.demo.Repository.BuserRepository;
+
 import com.bdaybumps.demo.controllers.LoggingController;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -17,20 +19,20 @@ import java.util.Optional;
 @Service
 public class Userservice {
     @Autowired
-    private UserRepository userRepository;
+    private BuserRepository userRepository;
     @Autowired
     private GmailService gmailService;
     Logger logger = LoggerFactory.getLogger(LoggingController.class);
-    public  ResponseEntity<UserEntity> createUser(UserModelDTO user)
+    public  ResponseEntity<BuserEntity> createUser(UserModelDTO user)
     {
-        UserEntity temp = new UserEntity(
+        BuserEntity temp = new BuserEntity(
 
 
-                user.getFirstName(),
-                user.getLastName(),
-                user.getEmail(),
-                user.getPassword(),
-                user.getFriendsList()
+                user.getBfirstName(),
+                user.getBlastName(),
+                user.getBemail(),
+                user.getBpassword()
+
 
         );
         System.out.println(user);
@@ -38,9 +40,9 @@ public class Userservice {
         logger.info("New User Created.An Email is sent.");
         return new ResponseEntity<>(userRepository.save(temp), HttpStatus.CREATED);
     }
-    public List<UserEntity> getAllUsers()
+    public List<BuserEntity> getAllUsers()
     {
-        List<UserEntity> li = userRepository.findAll();
+        List<BuserEntity> li = userRepository.findAll();
         return  li;
     }
 
