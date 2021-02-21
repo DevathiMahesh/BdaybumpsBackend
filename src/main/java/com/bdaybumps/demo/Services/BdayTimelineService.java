@@ -7,6 +7,9 @@ import com.bdaybumps.demo.Repository.BuserRepository;
 
 import com.bdaybumps.demo.controllers.FriendsController;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import java.text.SimpleDateFormat;
@@ -16,9 +19,9 @@ import java.util.*;
 public class BdayTimelineService {
     @Autowired
     private BuserRepository userRepository;
-
-
-
+    @Autowired
+    private JavaMailSender javaMailSender;
+    private List<String> todayBstars = new ArrayList();
     private Map<String,List<BfriendEntity>> response = new HashMap<String,List<BfriendEntity>>();
     public Date d = new Date();
     SimpleDateFormat formatNowDay = new SimpleDateFormat("dd");
@@ -38,6 +41,7 @@ public class BdayTimelineService {
               if(currentMonth.equals(month) && currentDay.equals(day))
               {
                   todaystars.add(b);
+                  todayBstars.add(b.getFname());
               }
           }
           response.put("day",todaystars);
@@ -84,8 +88,23 @@ public class BdayTimelineService {
         this.getMonthStars(li);
         this.getWeekStars(li);
         return this.response;
+    }
+    @Scheduled(cron = " 0 58 9 * * *")
+    public void sendRemainder()
+    {
 
-//        return  "Bday Timeline service hitting";
-//        return ResponseEntity.ok();
+            List<BuserEntity> u = userRepository.findAll();
+            for(BuserEntity buser:u) {
+                List<BfriendEntity> li = buser.getBfriends();
+                this.getTodayStars(li);
+                for(String friend:todayBstars) {
+                    SimpleMailMessage simpleMailMessage = new SimpleMailMessage();
+                    simpleMailMessage.setFrom("noreply@bdaybumps.com");
+                    simpleMailMessage.setSubject(friend + " is your Bday Star today.");
+                    simpleMailMessage.setText("Its " + friend + "'s Bday today...Wish him for great years ahead.");
+                    simpleMailMessage.setTo("d.mahesh995@gmail.com");
+                    javaMailSender.send(simpleMailMessage);
+                }
+            }
     }
 }

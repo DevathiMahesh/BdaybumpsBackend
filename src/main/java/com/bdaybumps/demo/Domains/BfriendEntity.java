@@ -18,7 +18,7 @@ public class BfriendEntity {
     private String femail;
     private String fphone;
     private Date fdob;
-    @ManyToOne
+    @ManyToOne(fetch=FetchType.EAGER)
     @JoinColumn(name="bfriend_id",referencedColumnName = "buid")
     @JsonBackReference
     private BuserEntity user1;

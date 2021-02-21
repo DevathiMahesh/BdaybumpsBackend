@@ -13,7 +13,7 @@ public class NotifyEntity {
     private Long nid;
     private String ntitle;
     private String ndescription;
-    @ManyToOne
+    @ManyToOne(fetch=FetchType.EAGER)
     @JoinColumn(name="notify_id",referencedColumnName = "buid")
     @JsonBackReference
     private BuserEntity user2;

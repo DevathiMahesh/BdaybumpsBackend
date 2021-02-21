@@ -24,14 +24,5 @@ public class GmailService {
         simpleMailMessage.setTo("d.mahesh995@gmail.com");
         javaMailSender.send(simpleMailMessage);
     }
-    @Scheduled(fixedRate = 100000)
-    public void sendRemainder()
-    {
-        SimpleMailMessage simpleMailMessage = new SimpleMailMessage();
-        simpleMailMessage.setFrom("noreply@bdaybumps.com");
-        simpleMailMessage.setSubject("Bday Stars of the Day");
-        simpleMailMessage.setText("Its Harsha's Bday today...Wish him for great years ahead.");
-        simpleMailMessage.setTo("d.mahesh995@gmail.com");
-        javaMailSender.send(simpleMailMessage);
-    }
+
 }
