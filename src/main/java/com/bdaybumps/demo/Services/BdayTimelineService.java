@@ -11,7 +11,9 @@ import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
-
+import com.twilio.Twilio;
+import com.twilio.rest.api.v2010.account.Message;
+import com.twilio.type.PhoneNumber;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
@@ -21,13 +23,17 @@ public class BdayTimelineService {
     private BuserRepository userRepository;
     @Autowired
     private JavaMailSender javaMailSender;
-    private List<String> todayBstars = new ArrayList();
+    private List<BfriendEntity> todayBstars = new ArrayList();
     private Map<String,List<BfriendEntity>> response = new HashMap<String,List<BfriendEntity>>();
     public Date d = new Date();
     SimpleDateFormat formatNowDay = new SimpleDateFormat("dd");
     SimpleDateFormat formatNowMonth = new SimpleDateFormat("MM");
     String currentDay = formatNowDay.format(d);
     String currentMonth = formatNowMonth.format(d);
+    public static final String ACCOUNT_SID =
+            "ACca313aa8a6a0b46cfe98ffca7e4e6d73";
+    public static final String AUTH_TOKEN =
+            "ba8c713b14b146c6a5c7e00ee5fa4c60";
     public void getTodayStars(List<BfriendEntity> li)
     {
          List todaystars = new ArrayList();
@@ -41,7 +47,7 @@ public class BdayTimelineService {
               if(currentMonth.equals(month) && currentDay.equals(day))
               {
                   todaystars.add(b);
-                  todayBstars.add(b.getFname());
+                  todayBstars.add(b);
               }
           }
           response.put("day",todaystars);
@@ -89,7 +95,7 @@ public class BdayTimelineService {
         this.getWeekStars(li);
         return this.response;
     }
-    @Scheduled(cron = " 0 58 9 * * *")
+    @Scheduled(cron = " 0 51 11 * * *")
     public void sendRemainder()
     {
 
@@ -97,13 +103,24 @@ public class BdayTimelineService {
             for(BuserEntity buser:u) {
                 List<BfriendEntity> li = buser.getBfriends();
                 this.getTodayStars(li);
-                for(String friend:todayBstars) {
+                for(BfriendEntity friend:todayBstars) {
                     SimpleMailMessage simpleMailMessage = new SimpleMailMessage();
                     simpleMailMessage.setFrom("noreply@bdaybumps.com");
-                    simpleMailMessage.setSubject(friend + " is your Bday Star today.");
-                    simpleMailMessage.setText("Its " + friend + "'s Bday today...Wish him for great years ahead.");
+                    simpleMailMessage.setSubject(friend.getFname() + " is your Bday Star today.");
+                    simpleMailMessage.setText("Its " + friend.getFname() + "'s Bday today...Convey your Warm wishes by dialing in :"+friend.getFphone());
                     simpleMailMessage.setTo("d.mahesh995@gmail.com");
                     javaMailSender.send(simpleMailMessage);
+
+                    // Twillo messaging service
+//                    Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
+//
+//                    Message message = Message
+//                            .creator(new PhoneNumber("+917032370869"), // to
+//                                    new PhoneNumber("+17865743020"), // from
+//                                    "Your Friend "+friend.getFname()+"'s birthday today.Convey your warm wishes by dialing in :"+friend.getFphone())
+//                            .create();
+//
+//                    System.out.println(message.getSid());
                 }
             }
     }
