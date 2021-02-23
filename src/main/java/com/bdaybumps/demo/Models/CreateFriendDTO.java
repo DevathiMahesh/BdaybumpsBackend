@@ -1,5 +1,7 @@
 package com.bdaybumps.demo.Models;
 
+import org.apache.kafka.common.protocol.types.Field;
+
 import java.util.Date;
 
 public class CreateFriendDTO {
@@ -8,6 +10,7 @@ public class CreateFriendDTO {
     private String fphone;
     private String femail;
     private Date fdob;
+    private Boolean bestie;
     public void setFname(String fname) {
         this.fname = fname;
     }
@@ -16,7 +19,13 @@ public class CreateFriendDTO {
         this.fdob = fdob;
     }
 
+    public void setBestie(Boolean bestie) {
+        this.bestie = bestie;
+    }
 
+    public Boolean getBestie() {
+        return bestie;
+    }
 
     public void setFemail(String femail) {
         this.femail = femail;

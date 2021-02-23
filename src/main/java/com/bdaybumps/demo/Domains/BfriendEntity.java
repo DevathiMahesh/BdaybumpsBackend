@@ -2,6 +2,7 @@ package com.bdaybumps.demo.Domains;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.springframework.beans.factory.annotation.Value;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -18,6 +19,7 @@ public class BfriendEntity {
     private String femail;
     private String fphone;
     private Date fdob;
+    private Boolean bestie;
     @ManyToOne(fetch=FetchType.EAGER)
     @JoinColumn(name="bfriend_id",referencedColumnName = "buid")
     @JsonBackReference
@@ -27,12 +29,17 @@ public class BfriendEntity {
 
     }
 
-    public BfriendEntity(String fname,String femail,String fphone,Date fdob)
+    public BfriendEntity(String fname,String femail,String fphone,Date fdob,Boolean bestie)
     {
         this.fname = fname;
         this.femail = femail;
         this.fphone = fphone;
         this.fdob = fdob;
+        this.bestie = bestie;
+    }
+
+    public void setBestie(Boolean bestie) {
+        this.bestie = bestie;
     }
 
     public void setFphone(String fphone) {
@@ -63,6 +70,10 @@ public class BfriendEntity {
         return user1;
     }
 
+    public Boolean getBestie() {
+        return bestie;
+    }
+
     public String getFphone() {
         return fphone;
     }
@@ -91,6 +102,7 @@ public class BfriendEntity {
                 ", femail='" + femail + '\'' +
                 ", fphone='" + fphone + '\'' +
                 ", fdob=" + fdob +
+                ", bestie=" + bestie +
                 ", user1=" + user1 +
                 '}';
     }
