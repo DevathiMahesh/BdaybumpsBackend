@@ -42,4 +42,10 @@ public class BFriendsService {
         userRepository.save(t);
         return "Friend Created Successfully";
     }
+    public List<BfriendEntity> getFriendsById(Long buid)
+    {
+        BuserEntity buser =  userRepository.findByBuid(buid);
+        System.out.println(buser.getBfriends());
+        return buser.getBfriends();
+    }
 }
