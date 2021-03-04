@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 
 import javax.transaction.Transactional;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -47,5 +48,19 @@ public class BFriendsService {
         BuserEntity buser =  userRepository.findByBuid(buid);
         System.out.println(buser.getBfriends());
         return buser.getBfriends();
+    }
+    public List<BfriendEntity> getBestieById(Long buid)
+    {
+        BuserEntity buser = userRepository.findByBuid(buid);
+        List<BfriendEntity> friends = buser.getBfriends();
+        List<BfriendEntity> besties = new ArrayList<>();
+        for(BfriendEntity b:friends)
+        {
+            if(b.getBestie()==true)
+            {
+                besties.add(b);
+            }
+        }
+        return besties;
     }
 }

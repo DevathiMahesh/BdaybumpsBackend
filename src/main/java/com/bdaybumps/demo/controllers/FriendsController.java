@@ -33,4 +33,10 @@ public class FriendsController {
         System.out.println(buid+""+buid.getClass().getName());
         return friendsService.getFriendsById(Long.parseLong(buid));
     }
+
+    @GetMapping("/getBestieById/{buid}")
+    public List<BfriendEntity> getbestieById(@PathVariable("buid") String buid)
+    {
+        return friendsService.getBestieById(Long.parseLong(buid));
+    }
 }
