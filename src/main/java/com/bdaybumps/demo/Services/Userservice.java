@@ -45,5 +45,8 @@ public class Userservice {
         List<BuserEntity> li = userRepository.findAll();
         return  li;
     }
-
+    public BuserEntity findUserByEmail(String email)
+    {
+        return userRepository.findByBemail(email);
+    }
 }

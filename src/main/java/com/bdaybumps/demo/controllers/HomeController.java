@@ -17,7 +17,9 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 public class HomeController {
@@ -56,7 +58,11 @@ public class HomeController {
        }
        final UserDetails userDetails = myUserDetailsService.loadUserByUsername(temp.getUsername());
        final String jwt = jwtUtil.generateToken(userDetails);
-
-       return  ResponseEntity.ok(new AuthResponse(jwt));
+       AuthResponse ar = new AuthResponse(jwt);
+       BuserEntity b = userservice.findUserByEmail(temp.getUsername());
+       Map<String,Object> m = new HashMap<String,Object>();
+       m.put("jwt",ar);
+       m.put("userdetails",b);
+       return  ResponseEntity.ok(m);
     }
 }
