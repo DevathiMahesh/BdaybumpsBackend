@@ -16,7 +16,10 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import javax.mail.Multipart;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -36,12 +39,11 @@ public class HomeController {
     public String home(){
         return "Welcome Mahesh!";
     }
-    @PostMapping("/createuser")
-    public ResponseEntity<BuserEntity> createUser(@RequestBody  UserModelDTO temp)
-    {
+    @RequestMapping(method = RequestMethod.POST,path = {"/createuser"},consumes = { "multipart/form-data" })
+    public ResponseEntity<?> createUser(@RequestPart("user") UserModelDTO temp,@RequestPart("profilepic") MultipartFile file) throws IOException {
 
         System.out.println("In Home controller"+temp);
-        return userservice.createUser(temp);
+        return userservice.createUser(temp,file);
     }
     @GetMapping("/allusers")
     public List<BuserEntity> getAllUsers()

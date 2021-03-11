@@ -12,7 +12,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import javax.mail.Multipart;
+import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 
@@ -23,15 +26,15 @@ public class Userservice {
     @Autowired
     private GmailService gmailService;
     Logger logger = LoggerFactory.getLogger(LoggingController.class);
-    public  ResponseEntity<BuserEntity> createUser(UserModelDTO user)
-    {
+    public  ResponseEntity<BuserEntity> createUser(UserModelDTO user, MultipartFile profilepic) throws IOException {
         BuserEntity temp = new BuserEntity(
 
 
                 user.getBfirstName(),
                 user.getBlastName(),
                 user.getBemail(),
-                user.getBpassword()
+                user.getBpassword(),
+                profilepic.getBytes()
 
 
         );

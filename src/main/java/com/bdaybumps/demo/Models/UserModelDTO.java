@@ -14,7 +14,6 @@ public class UserModelDTO {
     private String blastName;
     private String bemail;
     private String bpassword;
-
     public UserModelDTO()
     {
 
@@ -27,11 +26,14 @@ public class UserModelDTO {
         this.bemail = bemail;
         this.bpassword = bpassword;
 
+
     }
 
     private Timestamp creationDate;
 
     private Timestamp modifiedDate;
+
+
 
     public void setBuid(Long buid) {
         this.buid = buid;
@@ -60,6 +62,8 @@ public class UserModelDTO {
     public void setModifiedDate(Timestamp modifiedDate) {
         this.modifiedDate = modifiedDate;
     }
+
+
 
     public Long getBuid() {
         return buid;
