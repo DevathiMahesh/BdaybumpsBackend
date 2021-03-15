@@ -63,4 +63,8 @@ public class BFriendsService {
         }
         return besties;
     }
+    public String deleteFriend(BfriendEntity friend){
+         friendsRepository.delete(friend);
+         return "Friend Deleted Successfully";
+    }
 }

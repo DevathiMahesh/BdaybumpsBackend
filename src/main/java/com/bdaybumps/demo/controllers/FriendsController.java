@@ -39,4 +39,10 @@ public class FriendsController {
     {
         return friendsService.getBestieById(Long.parseLong(buid));
     }
+    @DeleteMapping("/deleteFriend")
+    public String deleteFriendById(@RequestBody BfriendEntity body)
+    {
+        System.out.println("Friend entity "+body);
+        return friendsService.deleteFriend(body);
+    }
 }

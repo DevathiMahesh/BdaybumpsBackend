@@ -6,4 +6,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface BfriendsRepository extends JpaRepository<BfriendEntity,Long> {
+    @Override
+    void delete(BfriendEntity bfriendEntity);
 }
