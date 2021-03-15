@@ -48,6 +48,12 @@ public class Userservice {
         List<BuserEntity> li = userRepository.findAll();
         return  li;
     }
+    public String deleteUser(Long buid)
+    {
+         BuserEntity b = userRepository.findByBuid(buid);
+         userRepository.delete(b);
+         return  "user deleted successfully";
+    }
     public BuserEntity findUserByEmail(String email)
     {
         return userRepository.findByBemail(email);

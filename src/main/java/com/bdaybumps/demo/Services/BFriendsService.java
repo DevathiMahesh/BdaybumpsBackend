@@ -64,7 +64,13 @@ public class BFriendsService {
         return besties;
     }
     public String deleteFriend(BfriendEntity friend){
-         friendsRepository.delete(friend);
-         return "Friend Deleted Successfully";
+        System.out.println("In friends Service"+friend);
+        friendsRepository.deleteByFid(friend.getFid());
+        return "Friend Deleted Successfully";
+    }
+    public String updateFriend(BfriendEntity friend)
+    {
+        friendsRepository.save(friend);
+        return "Friend Updated Successfully.";
     }
 }

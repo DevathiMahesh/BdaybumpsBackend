@@ -4,10 +4,12 @@ import com.bdaybumps.demo.Domains.BfriendEntity;
 import com.bdaybumps.demo.Models.CreateFriendDTO;
 import com.bdaybumps.demo.Repository.BfriendsRepository;
 import com.bdaybumps.demo.Services.BFriendsService;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 public class FriendsController {
@@ -39,10 +41,17 @@ public class FriendsController {
     {
         return friendsService.getBestieById(Long.parseLong(buid));
     }
-    @DeleteMapping("/deleteFriend")
-    public String deleteFriendById(@RequestBody BfriendEntity body)
+    @PostMapping("/deleteFriend")
+    @CrossOrigin("http://localhost:4200")
+    public String deleteFriend(@RequestBody BfriendEntity friend)
     {
-        System.out.println("Friend entity "+body);
-        return friendsService.deleteFriend(body);
+        return friendsService.deleteFriend(friend);
+    }
+    @PutMapping("/updateFriend")
+    @CrossOrigin("http://localhost:4200")
+    public String updateFriend(@RequestPart("friend") BfriendEntity friend,@RequestPart("buid") Long buid)
+    {
+        System.out.println("updating friend entity"+friend+" "+buid);
+       return  friendsService.updateFriend(friend);
     }
 }

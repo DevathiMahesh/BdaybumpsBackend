@@ -45,11 +45,19 @@ public class HomeController {
         System.out.println("In Home controller"+temp);
         return userservice.createUser(temp,file);
     }
+
+    @PostMapping("/deleteUser/{buid}")
+    public String deleteUser(@PathVariable("buid") Long buid)
+    {
+        return userservice.deleteUser(buid);
+    }
     @GetMapping("/allusers")
     public List<BuserEntity> getAllUsers()
     {
         return userservice.getAllUsers();
     }
+
+
     @CrossOrigin(origins = "http://localhost:4200")
     @PostMapping("/authenticate")
     public ResponseEntity<?> createAuthenticationToken(@RequestBody AuthRequest temp) throws Exception {
