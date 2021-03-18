@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
+
 
 @RestController
 public class FriendsController {
@@ -45,13 +47,14 @@ public class FriendsController {
     @CrossOrigin("http://localhost:4200")
     public String deleteFriend(@RequestBody BfriendEntity friend)
     {
+
         return friendsService.deleteFriend(friend);
     }
     @PutMapping("/updateFriend")
     @CrossOrigin("http://localhost:4200")
-    public String updateFriend(@RequestPart("friend") BfriendEntity friend,@RequestPart("buid") Long buid)
+    public String updateFriend(@RequestBody BfriendEntity friend)
     {
-        System.out.println("updating friend entity"+friend+" "+buid);
+
        return  friendsService.updateFriend(friend);
     }
 }

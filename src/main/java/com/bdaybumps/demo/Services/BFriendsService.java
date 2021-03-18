@@ -65,7 +65,11 @@ public class BFriendsService {
     }
     public String deleteFriend(BfriendEntity friend){
         System.out.println("In friends Service"+friend);
-        friendsRepository.deleteByFid(friend.getFid());
+        BuserEntity t = userRepository.findByBemail("d.mahesh995@gmail.com");
+        t.removeEntity(friend);
+        userRepository.save(t);
+        friend.setUser1(null);
+        friendsRepository.save(friend);
         return "Friend Deleted Successfully";
     }
     public String updateFriend(BfriendEntity friend)

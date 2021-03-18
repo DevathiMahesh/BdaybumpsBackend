@@ -13,8 +13,6 @@ public class BfriendEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long fid;
-
-
     private String fname;
     private String femail;
     private String fphone;
