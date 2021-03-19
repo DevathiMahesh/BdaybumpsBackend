@@ -74,7 +74,12 @@ public class BFriendsService {
     }
     public String updateFriend(BfriendEntity friend)
     {
+        System.out.println("In friends Service"+friend);
+        BuserEntity t = userRepository.findByBemail("d.mahesh995@gmail.com");
         friendsRepository.save(friend);
+        t.updateEntity(friend);
+        userRepository.save(t);
+
         return "Friend Updated Successfully.";
     }
 }
